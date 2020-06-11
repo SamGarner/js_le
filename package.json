@@ -1,0 +1,27 @@
+{
+  "name": "js_le",
+  "version": "1.0.0",
+  "description": "js le sample",
+  "main": "main.js",
+  "dependencies": {
+    "sam-palindrome": "^0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamGarner/js_le.git"
+  },
+  "keywords": [
+    "javascript",
+    "le"
+  ],
+  "author": "samgarner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamGarner/js_le/issues"
+  },
+  "homepage": "https://github.com/SamGarner/js_le#readme"
+}

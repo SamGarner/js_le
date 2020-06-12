@@ -4,7 +4,7 @@
   "description": "js le sample",
   "main": "main.js",
   "dependencies": {
-    "sam-palindrome": "^0.2.0"
+    "sam-palindrome": "^0.22.1"
   },
   "devDependencies": {},
   "scripts": {

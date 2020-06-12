@@ -1,0 +1,48 @@
+#!/usr/bin/node
+
+let got = require("got");
+let Phrase = require("sam-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt';
+
+//  GOT!!! for 10.2 **MAIN**
+(async () => {
+		try {
+			const response = await got(url);
+			response.body.split("\n").forEach(function(line) {
+				phrase = new Phrase(line);
+				if (phrase.palindrome()) {
+				console.log("palindrome detected: ", line);
+		}
+	});
+	} catch (error) {
+			console.log(error.response.body);
+	}
+})();
+
+//  GOT!!!  for 10.2 exercise using filter array
+// (async () => {
+// 		try {
+// 			const response = await got(url);
+// 				let lines = response.body.split("\n");
+// 				let palindromes = lines.filter(line => new Phrase(line).palindrome());
+
+// 				palindromes.forEach(function(palindrome) {
+// 					console.log("palindrome detected: ", palindrome);
+// 				});
+// 				} catch (error) {
+// 			 			console.log(error.response.body);
+// 		}
+// })();
+
+
+// Got example::
+// (async () => {
+//     try {
+//         const response = await got('https://sindresorhus.com');
+//         console.log(response.body);
+//         //=> '<!doctype html> ...'
+//     } catch (error) {
+//         console.log(error.response.body);
+//         //=> 'Internal server error ...'
+//     }
+// })();

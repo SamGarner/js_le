@@ -1,0 +1,29 @@
+#!/usr/bin/node
+
+let fs = require("fs");
+let Phrase = require("sam-palindrome");
+
+// let text = fs.readFileSync("phrases.txt", "utf-8");
+// text.split("\n").forEach(function(line) {
+// 	let phrase = new Phrase(line);
+// 	if (phrase.palindrome()) {
+// 		console.log("palindrome detected:", line);
+// 	}
+// });
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+text.split("\n").forEach(function(line) {
+	let phrase = new Phrase(line);
+	if (phrase.palindrome()) {
+		fs.appendFile("palindromes.txt", line + "\n", function(err) {
+			if (err) return console.log(err);
+			console.log("Added to file: " + line);
+		});
+	}
+});
+
+
+// /practice/repos/js_tutorial/palindromes.txt
+// [data]
+// "utf-8"
+// function(err)

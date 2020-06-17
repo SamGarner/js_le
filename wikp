@@ -1,0 +1,58 @@
+#!/usr/bin/node
+
+// Returns the paragraphs from a Wikipedia link, stripped of reference numbers.
+
+// 1 - pass a URL as a command line argument
+// 2 - manipulate downloaded HTML
+// 3 - remove reference point/numbers
+// 4 - output the paragraphs
+
+// process.argv[ ];
+	//[0] = process.execPath (/usr/bin/node)
+	//[1] = path to the JS file being executed (repos/js_tutorial/wikp)
+	//[2-*] = any additional command line arguments ([2] = our wiki URL) 
+
+
+const got = require('got');
+let url = process.argv[2];
+
+if (url = []) {
+	console.log(`Please provide a URL: "wikp <url>"`);
+	process.exit();	
+};
+
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+(async () => {
+	try {
+				const response = await got(url);
+				//SG debug:
+				//console.log('response:' + response);
+
+				// Simulate a Document Object Model
+				let { document } = (new JSDOM(response.body)).window;
+
+				// Grab all the paragraphs and references
+				let paragraphs = document.querySelectorAll("p");
+				let references = document.querySelectorAll(".reference");
+
+				//SG: debugging
+				//console.log(paragraphs[1]);
+				//console.log(references[1]);
+
+				// Remove any references.
+				references.forEach(function(reference) {
+					reference.remove();
+				});
+
+				// Print out all the paragraphs.
+				paragraphs.forEach(function(paragraph) {
+					console.log(paragraph.textContent);
+				});
+	} catch (error) {
+		console.log(error.response.body);
+	}
+})();
+
+//console.log(url);
